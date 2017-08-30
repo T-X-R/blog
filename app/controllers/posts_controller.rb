@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @posts = Post.all #把post表里的所有东西都拿出来
   end
 
   def new
+    @post = Post.new
   end
 
   def create
